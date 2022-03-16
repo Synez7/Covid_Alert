@@ -26,7 +26,7 @@ public class UsersController {
     @GetMapping(uri + "/users/{id}") 
     public User get(@PathVariable Long id){
     	
-    	if(userRepository.findById(id).isPresent()){
+    	if(userRepository.findById(id).isEmpty()){
     		throw new ResponseStatusException(HttpStatus.NOT_FOUND , " User with ID " + id + " not found " ) ;
     	}
         return userRepository.getById(id);
